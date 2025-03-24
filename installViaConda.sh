@@ -29,7 +29,7 @@ if $flagConda
 then
     # Installing enviroment via CONDA
     source /home/$USER/miniconda3/etc/profile.d/conda.sh
-    conda create --name csp python=3.13.1
+    conda create --name csp python=3.13.2
     conda activate csp
 
     # Installing GeNN
