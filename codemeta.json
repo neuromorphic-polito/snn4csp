@@ -1,0 +1,114 @@
+{
+    "@context": "https://w3id.org/codemeta/3.0",
+    "type": "SoftwareSourceCode",
+    "applicationCategory": "Computer science",
+    "author": [
+        {
+            "id": "https://orcid.org/0000-0001-6341-8613",
+            "type": "Person",
+            "affiliation": {
+                "type": "Organization",
+                "name": "Department of Control and Computer Engineering, Politecnico di Torino"
+            },
+            "email": "riccardo.pignari@polito.it",
+            "familyName": "Pignari",
+            "givenName": "Riccardo"
+        },
+        {
+            "id": "https://orcid.org/0000-0001-9175-2838",
+            "type": "Person",
+            "affiliation": {
+                "type": "Organization",
+                "name": "Interuniversity Department of Regional and Urban Studies and Planning, Politecnico di Torino"
+            },
+            "email": "vittorio.fra@polito.it",
+            "familyName": "Fra",
+            "givenName": "Vittorio"
+        },
+        {
+            "id": "https://orcid.org/0000-0001-9046-5618",
+            "type": "Person",
+            "affiliation": {
+                "type": "Organization",
+                "name": "Interuniversity Department of Regional and Urban Studies and Planning, Politecnico di Torino"
+            },
+            "email": "enrico.macii@polito.it",
+            "familyName": "Macii",
+            "givenName": "Enrico"
+        },
+        {
+            "id": "https://orcid.org/0000-0003-2672-7593",
+            "type": "Person",
+            "affiliation": {
+                "type": "Organization",
+                "name": "Interuniversity Department of Regional and Urban Studies and Planning, Politecnico di Torino"
+            },
+            "email": "gianvito.urgese@polito.it",
+            "familyName": "Urgese",
+            "givenName": "Gianvito"
+        }
+    ],
+    "codeRepository": "git+https://github.com/neuromorphic-polito/snn4csp",
+    "contributor": [
+        {
+            "id": "https://orcid.org/0000-0001-6341-8613",
+            "type": "Person",
+            "affiliation": {
+                "type": "Organization",
+                "name": "Department of Control and Computer Engineering, Politecnico di Torino"
+            },
+            "email": "riccardo.pignari@polito.it",
+            "familyName": "Pignari",
+            "givenName": "Riccardo"
+        },
+        {
+            "id": "https://orcid.org/0000-0003-2672-7593",
+            "type": "Person",
+            "affiliation": {
+                "type": "Organization",
+                "name": "Interuniversity Department of Regional and Urban Studies and Planning, Politecnico di Torino"
+            },
+            "email": "gianvito.urgese@polito.it",
+            "familyName": "Urgese",
+            "givenName": "Gianvito"
+        }
+    ],
+    "dateCreated": "2025-02-24",
+    "dateModified": "2025-04-01",
+    "datePublished": "2025-02-24",
+    "description": "A fully spiking solution of constraint satisfaction problem.",
+    "funder": {
+        "type": "Organization",
+        "name": "NRRP-RI, M4C2, funded by the European Union - NextGenerationEU"
+    },
+    "identifier": "10.1109/TAI.2025.3536428",
+    "isPartOf": "https://innuce.polito.it/",
+    "keywords": [
+        "Constraint satisfaction problem",
+        "GeNN",
+        "Neuromorphic computing",
+        "Spiking neural network",
+        "SpiNNaker",
+        "Sudoku"
+    ],
+    "license": "https://spdx.org/licenses/BSD-3-Clause",
+    "name": "snn4csp",
+    "operatingSystem": [
+        "Linux",
+        "maxOS",
+        "Windows"
+    ],
+    "programmingLanguage": [
+        "Python",
+        "Jupyter Notebook"
+    ],
+    "releaseNotes": "The latest version of the software holds the SNN for solving the Sudoku problem. This has been implemented for GeNN software framework and SpiNNaker 1 hardware platform.",
+    "runtimePlatform": "Miniconda",
+    "softwareRequirements": "https://genn-team.github.io/genn/documentation/5/index.html",
+    "version": "1.0.0",
+    "developmentStatus": "active",
+    "funding": "Project IR0000011, CUP B51E22000150006, EBRAINS-Italy",
+    "isSourceCodeOf": "inNuCE Lab",
+    "issueTracker": "https://github.com/neuromorphic-polito/snn4csp/issues",
+    "referencePublication": "https://doi.org/10.1109/TAI.2025.3536428"
+}
