@@ -17,6 +17,7 @@ nohup.out
 article/drawioSource
 article/image/*
 !article/image/pipelineGithub.png
+!article/image/googleColab.png
 
 *.csv
 *.ods
