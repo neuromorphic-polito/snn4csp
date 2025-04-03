@@ -24,11 +24,9 @@ Further studies [[7]](#7), [[8]](#8), [[9]](#9) have also investigated neuromorp
 
 Impact Statement - This project introduces a novel approach for solving Constraint Satisfaction Problems using Spiking Neural Networks (SNNs) with neuromorphic tools like the GeNN framework and SpiNNaker platform. It presents a fully spiking pipeline incorporating constraint stabilization, neuron idling, and built-in validation to enhance efficiency in SNN-based Sudoku solvers. The approach significantly reduces extracted spikes (54.63%–99.98%) and extraction time (88.56%–96.41%), leading to improved energy efficiency and computational performance. The findings highlight the potential of neuromorphic hardware for implementing effective, low-power solutions applicable to AI, IoT, and Industry 4.0.
 
-<div >
-    <a href="https://colab.research.google.com/drive/1cHY85Zk4AV1IdK1GK3qbbm_BRIWdUyMX?usp=sharing">
-        <img src="article/image/googleColab.png" alt="Google Colab" style="width:28%;padding: 7px 6px 2px 6px;border:1.5px solid #DADADA;border-radius: 5px;box-shadow: 0px 5px 5px 0px #CCCCCC;">
-    </a>
-</div>
+<a href="https://colab.research.google.com/drive/1cHY85Zk4AV1IdK1GK3qbbm_BRIWdUyMX?usp=sharing">
+    <img src="article/image/googleColab.png" alt="Google Colab" style="width:28%;padding: 7px 6px 2px 6px;border:1.5px solid #252525;border-radius: 5px;box-shadow: 0px 5px 5px 0px #CCCCCC;">
+</a>
 
 
 ### Reference
