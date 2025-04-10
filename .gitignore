@@ -17,6 +17,8 @@ nohup.out
 article/drawioSource
 article/image/*
 !article/image/pipelineGithub.png
+!article/image/sudokuNetDetail.png
+!article/image/pipelineCube.png
 !article/image/tryGoogleColab.png
 !article/image/tryEbrains.png
 
