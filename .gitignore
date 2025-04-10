@@ -21,6 +21,7 @@ article/image/*
 !article/image/pipelineCube.png
 !article/image/tryGoogleColab.png
 !article/image/tryEbrains.png
+!article/image/errorColab.png
 
 *.csv
 *.ods
