@@ -25,11 +25,11 @@ Further studies [[7]](#7), [[8]](#8), [[9]](#9) have also investigated neuromorp
 Impact Statement - This project introduces a novel approach for solving Constraint Satisfaction Problems using Spiking Neural Networks (SNNs) with neuromorphic tools like the GeNN framework and SpiNNaker platform. It presents a fully spiking pipeline incorporating constraint stabilization, neuron idling, and built-in validation to enhance efficiency in SNN-based Sudoku solvers. The approach significantly reduces extracted spikes (54.63%–99.98%) and extraction time (88.56%–96.41%), leading to improved energy efficiency and computational performance. The findings highlight the potential of neuromorphic hardware for implementing effective, low-power solutions applicable to AI, IoT, and Industry 4.0.
 
 <div>
-    <a href="https://githubtocolab.com/neuromorphic-polito/snn4csp/blob/main/1-simulation/SudokuGeNN.ipynb" target="_blank" rel="noopener noreferrer">
+    <a href="https://githubtocolab.com/neuromorphic-polito/snn4csp/blob/main/1-simulation/SudokuGeNN.ipynb">
         <img src="article/image/tryGoogleColab.png" alt="Google Colab" width=28%>
     </a>
     <br>
-    <a href="https://lab.ebrains.eu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fneuromorphic-polito%2Fsnn4csp&urlpath=lab%2Ftree%2Fsnn4csp%2F1-simulation%2FSudokuSpiNNaker.ipynb&branch=main" target="_blank">
+    <a href="https://lab.ebrains.eu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fneuromorphic-polito%2Fsnn4csp&urlpath=lab%2Ftree%2Fsnn4csp%2F1-simulation%2FSudokuSpiNNaker.ipynb&branch=main">
         <img src="article/image/tryEbrains.png" alt="Google Colab" width=28%>
     </a>
 </div>
