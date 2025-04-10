@@ -33,11 +33,6 @@ then
     conda activate csp
 
     # Installing GeNN
-    echo "conda activate csp"
-    echo "sudo apt update"
-    echo "sudo apt install g++"
-    echo "https://developer.nvidia.com/cuda-downloads"
-    echo "sudo apt install libffi-dev"
     export CUDA_PATH=/usr/local/cuda
     pip install pybind11 psutil numpy
     tar -xzf genn-5.1.0.tar.gz
@@ -47,22 +42,7 @@ then
     # Installing package via PIP
     pip install matplotlib
     pip install pyvis==0.3.1
-    pip install sPyNNaker8 --ignore-installed certifi
+    pip install sPyNNaker
     pip install notebook
-    python -m ipykernel install --user --name=cspPy312
-    pip install nni
-
-    # Setting SpiNNaker 8
-    echo ""
-    echo "python"
-    echo "import spynnaker8 as sim"
-    echo "sim.setup()"
-    echo "sim.end()"
-
-    echo "cd /home/<USER>"
-    echo "nano .spynnaker.cfg"
-
-    echo "[Machine]"
-    echo "machineName = <NAME>"
-    echo "version = 5"
+    python -m ipykernel install --user --name=cspPy313
 fi

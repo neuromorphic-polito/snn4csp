@@ -1,8 +1,7 @@
-import nni
 import argparse
 from sudokuDataset import *
 import numpy as np
-import spynnaker8 as model
+import pyNN.spiNNaker as model
 import time
 import csv
 import os
@@ -148,7 +147,6 @@ def main(argument):
             )
 
     if argument.enhanced == 1:
-        # ##### Validation network ##### #
         ##### Neuron parameters #####
         paramLif['i_offset'] = 0.1
         validationPop = 10
@@ -516,67 +514,54 @@ def main(argument):
     binsTime = np.arange(0, timeSteps+binWidth, binWidth)
 
     flagSol, timeExtraction, spikeCount = 0, 0, 0
+    solverBins = np.zeros(shape=(binsTime.size - 1, variables, variables), dtype=np.uint8)
     if argument.enhanced == 0:
+        ##### Solution validation #####
+        binsPop = np.arange(0, (variables + 1) * solverPop, solverPop)
         timeBaseLineStart = time.time()
-        popVarRec = [[0 for _ in range(variables)] for _ in range(variables)]
         for row in range(variables):
             for col in range(variables):
                 spike = popVar[row][col].get_data('spikes')
-                popVarRec[row][col] = [np.array(neuron) for neuron in spike.segments[0].spiketrains]
+                times, index = [], []
+                for i, neuron in enumerate(spike.segments[0].spiketrains):
+                    times.append(np.array(neuron))
+                    index.append(np.tile(i, times[-1].size))
+                times = np.hstack(times)
+                index = np.hstack(index)
+
+                wta = np.histogram2d(index, times, (binsPop, binsTime))[0]
+                solverBins[:, row, col] = np.argmax(wta, axis=0) + 1
+                spikeCount += times.size
+
         timeBaseLineEnd = time.time()
         timeExtraction = timeBaseLineEnd-timeBaseLineStart
 
-        ##### Solution validation #####
-        solverBins = np.zeros(shape=(binsTime.size-1, variables, variables), dtype=int)
-        for row in range(variables):
-            for col in range(variables):
-                value = np.zeros(shape=(binsTime.size-1, variables), dtype=int)
-                for i in range(variables*solverPop):
-                    digit = i//solverPop
-                    interval = np.searchsorted(binsTime, popVarRec[row][col][i])-1
-                    value[interval, digit] += 1
-                for b in range(binsTime.size-1):
-                    solverBins[b][row][col] = np.argmax(value[b, :])+1
-
-        for b in range(binsTime.size-1):
-            if np.array_equal(solverBins[b], sudokuSol) == True:
-                flagSol = 1
-                break
-
-        ##### Spike Count #####
-        for row in range(variables):
-            for col in range(variables):
-                for i in range(variables*solverPop):
-                    spikeCount += len(popVarRec[row][col][i])
-
     elif argument.enhanced == 1:
-        timeEnhancedStart = time.time()
-        popMemRec = [[0 for _ in range(variables)] for _ in range(variables)]
+        ##### Memory validation #####
+        binsPop = np.arange(0, (variables + 1) * memoryPop, memoryPop)
+        timeBaseLineStart = time.time()
         for row in range(variables):
             for col in range(variables):
                 spike = popMem[row][col].get_data('spikes')
-                popMemRec[row][col] = [np.array(neuron) for neuron in spike.segments[0].spiketrains]
-        timeEnhancedEnd = time.time()
-        timeExtraction = timeEnhancedEnd-timeEnhancedStart
+                times, index = [], []
+                for i, neuron in enumerate(spike.segments[0].spiketrains):
+                    times.append(np.array(neuron))
+                    index.append(np.tile(i, times[-1].size))
+                times = np.hstack(times)
+                index = np.hstack(index)
 
-        sudokuMem = np.zeros(shape=(variables, variables), dtype=int)
-        for row in range(variables):
-            for col in range(variables):
-                value = np.zeros(shape=(variables), dtype=int)
-                for i in range(variables*memoryPop):
-                    digit = i//memoryPop
-                    value[digit] += np.sum(np.array(popMemRec[row][col][i]))
-                sudokuMem[row][col] = np.argmax(value)+1
+                wta = np.histogram2d(index, times, (binsPop, binsTime))[0]
+                solverBins[:, row, col] = np.argmax(wta, axis=0) + 1
+                spikeCount += times.size
+        timeBaseLineEnd = time.time()
+        timeExtraction = timeBaseLineEnd - timeBaseLineStart
 
-        ##### Memory validation #####
-        if np.array_equal(sudokuSol, sudokuMem):
+    model.end()
+
+    for b in range(binsTime.size - 1):
+        if np.array_equal(solverBins[b], sudokuSol) is True:
             flagSol = 1
-
-        for row in range(variables):
-            for col in range(variables):
-                for i in range(variables*memoryPop):
-                    spikeCount += len(popMemRec[row][col][i])
-
+            break
     try:
         file = open(f'../results/{name}.csv', 'r')
         file.close()
@@ -595,11 +580,6 @@ def main(argument):
     ])
     file.close()
 
-    model.end()
-
-    os.system('rm -r application_generated_data_files')
-    os.system('rm -r reports')
-
     return 0
 
 
@@ -607,21 +587,37 @@ def main(argument):
 # ##### Parser ##### #
 ######################
 if __name__ == '__main__':
-    paramsNNI = {
-        'difficulty': 'easy',
-        'conf': 0,
-        'trials': 2,
-    }
+    os.system('rm -r reports')
 
-    paramsNNI.update(nni.get_next_parameter())
+    with open(os.path.expanduser('~/.spynnaker.cfg'), 'w') as cfg:
+        cfg.write("[Machine]\n")
+        cfg.write("machineName = spin5.polito.it\n")
+        cfg.write("version = 5\n")
+        cfg.write("spalloc_server = None\n")
+        cfg.write("spalloc_port = 22244\n")
+        cfg.write("spalloc_user = None\n")
+        cfg.write("spalloc_group = None\n")
+        cfg.write("virtual_board = False\n")
+        cfg.write("width = None\n")
+        cfg.write("height = None\n")
+        cfg.write("time_scale_factor = 20\n")
+
+        cfg.write("[Reports]\n")
+        cfg.write("default_report_file_path = DEFAULT\n")
+        cfg.write("extract_iobuf = False\n")
+        cfg.write("extract_iobuf_from_cores = ALL\n")
+        cfg.write("extract_iobuf_from_binary_types = None\n")
+
+        cfg.write("[Mode]\n")
+        cfg.write("mode = Production\n")
 
     parser = argparse.ArgumentParser(description='Sudoku solver SpiNNaker')
 
-    parser.add_argument('-d', '--difficulty', help='Puzzle difficulty level', type=str, default='easy')  # paramsNNI['difficulty'])
+    parser.add_argument('-d', '--difficulty', help='Puzzle difficulty level', type=str, default='easy')
     parser.add_argument('-p', '--puzzle', help='Puzzle type', type=int, default=1)
-    parser.add_argument('-t', '--trials', help='Attempt of resolution', type=int, default=10)  # paramsNNI['trials'])
-    parser.add_argument('-b', '--bugFix', help='Bug fix for changing state of original problem', type=int, default=1)  # paramsNNI['conf'])
-    parser.add_argument('-e', '--enhanced', help='Use the enhanced pipeline', type=int, default=1)  # paramsNNI['conf'])
+    parser.add_argument('-t', '--trials', help='Attempt of resolution', type=int, default=2)
+    parser.add_argument('-b', '--bugFix', help='Bug fix for changing state of original problem', type=int, default=1)
+    parser.add_argument('-e', '--enhanced', help='Use the enhanced pipeline', type=int, default=1)
     parser.add_argument('-w', '--bin-width', help='Binning width', type=int, default=100)
 
     argument = parser.parse_args()
