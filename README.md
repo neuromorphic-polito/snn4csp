@@ -26,11 +26,11 @@ Impact Statement - This project introduces a novel approach for solving Constrai
 
 <div>
     <a href="https://githubtocolab.com/neuromorphic-polito/snn4csp/blob/main/1-simulation/SudokuGeNN.ipynb">
-        <img src="article/image/tryGoogleColab.png" alt="Google Colab" width=30%>
+        <img src="article/image/tryGoogleColab.png" alt="Google Colab" width=32%>
     </a>
     <br>
     <a href="https://lab.ebrains.eu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fneuromorphic-polito%2Fsnn4csp&urlpath=lab%2Ftree%2Fsnn4csp%2F1-simulation%2FSudokuSpiNNaker.ipynb&branch=main">
-        <img src="article/image/tryEbrains.png" alt="Google Colab" width=30%>
+        <img src="article/image/tryEbrains.png" alt="Google Colab" width=32%>
     </a>
 </div>
 
