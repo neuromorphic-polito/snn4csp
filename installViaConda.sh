@@ -43,6 +43,6 @@ then
     pip install matplotlib
     pip install pyvis==0.3.1
     pip install sPyNNaker
-    pip install notebook
+    pip install jupyterlab
     python -m ipykernel install --user --name=cspPy313
 fi
