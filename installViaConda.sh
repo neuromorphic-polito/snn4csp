@@ -11,7 +11,7 @@ then
     echo "It appears that CONDA is not installed"
     echo "Run the following commands to install it"
     echo ""
-    echo "    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+    echo "    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
     echo "    chmod +x Miniconda3-latest-Linux-x86_64.sh"
     echo "    ./Miniconda3-latest-Linux-x86_64.sh"
     echo ""
