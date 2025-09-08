@@ -44,5 +44,6 @@ then
     pip install pyvis==0.3.1
     pip install sPyNNaker
     pip install jupyterlab
+    pip install pandas
     python -m ipykernel install --user --name=cspPy313
 fi
