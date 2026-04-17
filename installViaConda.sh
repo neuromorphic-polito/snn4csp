@@ -45,6 +45,8 @@ then
     git clone --branch 5.4.0 https://github.com/genn-team/genn.git
     cd genn
     python setup.py install
+    cd ..
+    rm -r genn
 
     # Installing package via PIP
     pip install matplotlib==3.10.1
