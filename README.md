@@ -74,9 +74,16 @@ chmod +x installViaConda.sh
 
 ## Docker configuration
 
-Docker setup enviroment:
+Docker setup enviroment.
+
+Run with GPU
 ```
 sudo docker run --rm -d --gpus all -p 8080:8080 --name snn4csp innuce/snn4csp:v1.0.0
+```
+
+Run without GPU
+```
+sudo docker run --rm -d -p 8080:8080 --name snn4csp innuce/snn4csp:v1.0.0
 ```
 
 This repository also provides the docker file present in `Dockerfile` to customize your build.
