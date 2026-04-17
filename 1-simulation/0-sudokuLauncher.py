@@ -13,7 +13,7 @@ for d in difficulties:
     for p in puzzles:
         for b in bugFix:
             for e in enhanced:
-                os.system(f'python 1-sudokuGENN.py -d {d} -p {p} -t 300 -b {b} -e {e} -g 1')
+                os.system(f'python3 1-sudokuGENN.py -d {d} -p {p} -t 300 -b {b} -e {e} -g 1')
                 print(f'Difficulty: {d} | Puzzle: {p} | Bug Fix: {b} | Enhanced {e}')
 
 
@@ -38,5 +38,5 @@ for d in difficulties:
                 except:
                     start = 0
                 if start < trials:
-                    os.system(f'python 2-sudokuSpiNNaker.py -d {d} -p {p} -t {trials} -b {b} -e {e}')
+                    os.system(f'python3 2-sudokuSpiNNaker.py -d {d} -p {p} -t {trials} -b {b} -e {e}')
                     print(f'Difficulty: {d} | Puzzle: {p} | Bug Fix: {b} | Enhanced {e}')
