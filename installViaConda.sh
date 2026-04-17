@@ -29,21 +29,28 @@ if $flagConda
 then
     # Installing enviroment via CONDA
     source /home/$USER/miniconda3/etc/profile.d/conda.sh
-    conda create --name csp python=3.13.2
+    conda create --name csp python=3.12.3
     conda activate csp
+
+    # Installing package via CONDA
+    conda install pip
+    conda install conda-forge::libffi==3.4.6
 
     # Installing GeNN
     export CUDA_PATH=/usr/local/cuda
-    pip install pybind11 psutil numpy
-    tar -xzf genn-5.1.0.tar.gz
-    cd genn-5.1.0
+    pip install pybind11==2.13.6
+    pip install psutil==7.0.0
+    pip install numpy==2.2.4
+    pip install pkgconfig==1.6.0
+    git clone --branch 5.4.0 https://github.com/genn-team/genn.git
+    cd genn
     python setup.py install
 
     # Installing package via PIP
-    pip install matplotlib
+    pip install matplotlib==3.10.1
     pip install pyvis==0.3.1
-    pip install sPyNNaker
-    pip install jupyterlab
-    pip install pandas
-    python -m ipykernel install --user --name=cspPy313
+    pip install sPyNNaker==1!7.3.0
+    pip install jupyterlab==4.4.0
+    pip install pandas==2.2.3
+    python -m ipykernel install --user --name=cspPy
 fi

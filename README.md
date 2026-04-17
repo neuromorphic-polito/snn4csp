@@ -50,13 +50,13 @@ The reference material used to develop the research is obtained from:
 - <a id="10">[10]</a> Khona, Mikail, and Ila R. Fiete. "Attractor and integrator networks in the brain." Nature Reviews Neuroscience 23.12 (2022): 744-766.
 
 
-## Virtual environment configuration
+## Conda environment configuration
 
 The project makes use of the virtual environment creator conda.
 
 Clone git repo:
 ```
-git clone https://github.com/neuromorphic-polito/sudokuValidation.git
+git clone https://github.com/neuromorphic-polito/snn4csp.git
 ```
 Conda installation:
 ```
@@ -66,7 +66,7 @@ chmod +x Miniconda3-py38_4.10.3-Linux-x86_64.sh
 ```
 To create the virtual environment and install all the necessary packages, run the commands:
 ```
-cd sudokuValidation
+cd snn4csp
 chmod +x installViaConda.sh
 ./installViaConda.sh
 ```
