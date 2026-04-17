@@ -72,6 +72,16 @@ chmod +x installViaConda.sh
 ```
 
 
+## Docker configuration
+
+Docker setup enviroment:
+```
+sudo docker run --rm -d --gpus all -p 8080:8080 --name snn4csp innuce/snn4csp:v1.0.0
+```
+
+This repository also provides the docker file present in `Dockerfile` to customize your build.
+
+
 ## Project Structure
 - `0-preliminaryAnalysis`: individual analysis of network components;
 - `1-simulation`: experiment execution folder;
