@@ -46,7 +46,7 @@ then
     cd genn
     python setup.py install
     cd ..
-    rm -r genn
+    rm -rf genn
 
     # Installing package via PIP
     pip install matplotlib==3.10.1
